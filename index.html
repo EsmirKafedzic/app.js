@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Points App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+        }
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Points Counter</h1>
+    <button id="positiveBtn">Add 1 Point</button>
+    <button id="negativeBtn">Subtract 1 Point</button>
+    <div id="score">Score: 0</div>
+
+    <script>
+        // Initialize points
+        let points = 0;
+
+        // Get elements
+        const scoreDisplay = document.getElementById('score');
+        const positiveBtn = document.getElementById('positiveBtn');
+        const negativeBtn = document.getElementById('negativeBtn');
+
+        // Update the score display
+        function updateScore() {
+            scoreDisplay.textContent = `Score: ${points}`;
+        }
+
+        // Add point when positive button is clicked
+        positiveBtn.addEventListener('click', function() {
+            points += 1;
+            updateScore();
+        });
+
+        // Subtract point when negative button is clicked
+        negativeBtn.addEventListener('click', function() {
+            points -= 1;
+            updateScore();
+        });
+    </script>
+</body>
+</html>
