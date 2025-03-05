@@ -19,6 +19,12 @@
             font-size: 24px;
             margin-top: 20px;
         }
+        img {
+            width: 100px;  /* Adjust the size of the image */
+            height: 100px;
+            display: none;  /* Initially hide the images */
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -26,6 +32,10 @@
     <button id="positiveBtn">Add 1 Point</button>
     <button id="negativeBtn">Subtract 1 Point</button>
     <div id="score">Score: 0</div>
+
+    <!-- Images -->
+    <img id="smileImg" src="img/smile.png" alt="Smile Image">
+    <img id="sadImg" src="img/sad.png" alt="Sad Image">
 
     <script>
         // Initialize points
@@ -35,22 +45,34 @@
         const scoreDisplay = document.getElementById('score');
         const positiveBtn = document.getElementById('positiveBtn');
         const negativeBtn = document.getElementById('negativeBtn');
+        const smileImg = document.getElementById('smileImg');
+        const sadImg = document.getElementById('sadImg');
 
         // Update the score display
         function updateScore() {
             scoreDisplay.textContent = `Score: ${points}`;
         }
 
+        // Function to show image for 5 seconds
+        function showImageForSeconds(imageElement) {
+            imageElement.style.display = "block";  // Show the image
+            setTimeout(function() {
+                imageElement.style.display = "none";  // Hide the image after 5 seconds
+            }, 5000);  // 5000 milliseconds = 5 seconds
+        }
+
         // Add point when positive button is clicked
         positiveBtn.addEventListener('click', function() {
             points += 1;
             updateScore();
+            showImageForSeconds(smileImg);  // Show smile image for 5 seconds
         });
 
         // Subtract point when negative button is clicked
         negativeBtn.addEventListener('click', function() {
             points -= 1;
             updateScore();
+            showImageForSeconds(sadImg);  // Show sad image for 5 seconds
         });
     </script>
 </body>
